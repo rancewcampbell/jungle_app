@@ -62,4 +62,32 @@ RSpec.describe User, type: :model do
       expect(@user.id).not_to be_present
     end
   end
+
+  describe '.authenticate_with_credentials' do
+    it 'should return the user if the authentication passes' do
+      @user = User.new(first_name: 'Rance', last_name: 'Campbell', email: 'rance@gmail.com', password: 'password', password_confirmation: 'password')
+      @user.save!
+
+      @user2 = User.authenticate_with_credentials('rance@gmail.com', 'password')
+
+      expect(@user).to eq(@user2)
+    end
+
+    it 'should return nil if the password is invalid' do
+      @user = User.new(first_name: 'Rance', last_name: 'Campbell', email: 'rance@gmail.com', password: 'password', password_confirmation: 'password')
+      @user.save!
+      @user2 = User.authenticate_with_credentials('rance@gmail.com', 'notpassword')
+
+      expect(@user2).to be_nil
+    end
+
+    it 'should return nil if the email is invalid' do
+      @user = User.new(first_name: 'Rance', last_name: 'Campbell', email: 'rance@gmail.com', password: 'password', password_confirmation: 'password')
+      @user.save!
+      @user2 = User.authenticate_with_credentials('ranc@gmail.com', 'password')
+
+      expect(@user2).to be_nil
+    end
+    
+  end
 end
