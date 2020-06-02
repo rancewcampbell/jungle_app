@@ -22,7 +22,7 @@ RSpec.feature "My cart is updated when 'Add to Cart' is clicked", type: :feature
 
     # DEBUG / VERIFY
     save_screenshot
-    expect(page).to have_text ' My Cart (1)'
+    expect(page.find('nav')).to have_text ' My Cart (1)'
   end
 
 end
