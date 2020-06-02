@@ -89,5 +89,23 @@ RSpec.describe User, type: :model do
       expect(@user2).to be_nil
     end
     
+    it 'should authenticate case insensitive emails' do
+      @user = User.new(first_name: 'Rance', last_name: 'Campbell', email: 'rance@gmail.com', password: 'password', password_confirmation: 'password')
+      @user.save!
+
+      @user2 = User.authenticate_with_credentials('RANCE@gmail.com', 'password')
+
+      expect(@user).to eq(@user2)
+    end
+
+    it 'should authenticate with leading and trailing whitespace around email' do
+      @user = User.new(first_name: 'Rance', last_name: 'Campbell', email: 'rance@gmail.com', password: 'password', password_confirmation: 'password')
+      @user.save!
+
+      @user2 = User.authenticate_with_credentials('    rance@gmail.com  ', 'password')
+
+      expect(@user).to eq(@user2)
+    end
+
   end
 end
