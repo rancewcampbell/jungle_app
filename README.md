@@ -2,7 +2,13 @@
 
 Jungle is a mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example. The project mimicked being given an existing code base and then adding features to that codebase. This is my first interaction with Ruby and specifically Rails. Some of the features I added to the project were enhancing the order details view to be more specific, user and admin authentication, and adding automated testing to many of these features. Browse through the repo and take a look!
 
-![]()
+## Jungle Homepage
+
+![homepage](https://github.com/rancewcampbell/jungle_app/blob/master/app/assets/images/home.png)
+
+## Jungle Cart/Checkout
+
+![cart/checkout](https://github.com/rancewcampbell/jungle_app/blob/master/app/assets/images/cart.png)
 
 ## Setup
 
